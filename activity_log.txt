@@ -1,0 +1,15 @@
+
+#1
+
+Tried following instructions at:
+https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
+- didn't work
+
+Moved on to instructions at:
+https://hub.docker.com/r/apache/superset
+- more success, was able to login
+	
+
+#2
+
+Began building Dockerfile with hopes of connecting to DB on host
