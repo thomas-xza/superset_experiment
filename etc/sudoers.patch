@@ -1,1 +1,1 @@
-t	ALL=(postgres) NOPASSWD:/usr/bin/psql
+t	ALL=(postgres) NOPASSWD:ALL

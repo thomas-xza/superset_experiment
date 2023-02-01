@@ -22,13 +22,20 @@ Installed Postgres DB to host.
 
 Began building Dockerfile with hopes of connecting to Postgres DB on host.
 
+Used the dependency list at:
+
+https://superset.apache.org/docs/databases/installing-database-drivers
+
 Found guides for opening up Postgres to new connections:
 
 https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
 
+^ at bottom of page
+
 https://gist.github.com/MauricioMoraes/87d76577babd4e084cba70f63c04b07d
 
 ...they worked!
+
 
 
 #3
@@ -41,5 +48,21 @@ Checked v14 is actually officially supported (phew, it is)
 
 https://superset.apache.org/docs/installation/configuring-superset
 
+t $  sudo -i -u postgres 
 
+postgres $  createuser --interactive
+
+postgres $  createdb test_db
+
+# useradd test_db
+
+Opting to share network with host to keep localhost connections simple, connect localhost:8088.
+
+So to build and run:
+
+$ cd ~/superset_experiment.git/
+
+$ docker build .
+
+$ docker run -d  --network=host --name superset 405bd7434a1e
 
