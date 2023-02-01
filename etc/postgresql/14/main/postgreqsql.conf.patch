@@ -1,0 +1,4 @@
+
+##  Allows both localhost and Docker containers to connect to Postgres on host.
+
+listen_addresses = 'localhost,172.17.0.0/16'

@@ -2,14 +2,44 @@
 #1
 
 Tried following instructions at:
+
 https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
-- didn't work
+
+...didn't work
 
 Moved on to instructions at:
+
 https://hub.docker.com/r/apache/superset
-- more success, was able to login
-	
+
+...more success, was able to login
+
+Stopped container. Realised need to connect to real SQL database to import custom data.
+
 
 #2
 
-Began building Dockerfile with hopes of connecting to DB on host
+Installed Postgres DB to host.
+
+Began building Dockerfile with hopes of connecting to Postgres DB on host.
+
+Found guides for opening up Postgres to new connections:
+
+https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
+
+https://gist.github.com/MauricioMoraes/87d76577babd4e084cba70f63c04b07d
+
+...they worked!
+
+
+#3
+
+Began setting up Postgres DB.
+
+https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
+
+Checked v14 is actually officially supported (phew, it is)
+
+https://superset.apache.org/docs/installation/configuring-superset
+
+
+
