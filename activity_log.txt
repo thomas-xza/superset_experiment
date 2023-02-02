@@ -79,4 +79,63 @@ t $ docker run -d  --network=host apache/superset:dockerfile_psql
 
 #4
 
-Onto actually using the data.
+Onto sourcing some data.
+
+Went for data from data.police.uk
+
+Downloaded a data set of all police forces 2022, and checked it out manually.
+
+Found the GMP data was incomplete - 2022-08 only, only 1 crime featured.
+
+Went directly to gmp.police.uk website, but data was more about stats of police behavior.
+
+Tried to find info about a specific stabbing on police's own website but did not appear.
+
+Tried earlier data of 2020, but the .zip was empty
+
+Moved on to Essex 2022-12 data, found it is more comprehensive.
+
+
+#5
+
+Onto importing data.
+
+Found tutorial:
+
+https://www.postgresqltutorial.com/postgresql-tutorial/import-csv-file-into-posgresql-table/
+
+And examples in official docs:
+
+https://www.postgresql.org/docs/current/sql-createtable.html
+
+Put SQL commands into a file, generated a table that fits CSV with:
+
+$ psql -d test_db -a -f /tmp/create_table_police_data.sql
+
+Imported CSV to table with:
+
+$ psql -d test_db
+
+COPY crime_data_essex(crime_id, month, reported_by, falls_within, longitude, latitude, location, lsoa_c, lsoa_n, type, last_outcome, context)
+FROM '/tmp/2022_12_essex_crimes_by_street.csv'
+DELIMITER ','
+CSV HEADER;
+
+OK the data appears to have fit OK, when running:
+
+postgres=# SELECT longitude,latitude FROM crime_data_essex;
+
+Hit some permission errors when trying to access via Supetset, found fix at:
+
+https://www.postgresql.r2schools.com/error-permission-denied-for-table-table_name-in-postgresql/
+
+GRANT ALL PRIVILEGES ON TABLE crime_data_essex TO test_superset;
+
+Data is now accessible from within Apache Superset!
+
+
+#6
+
+Onto visualising data...
+
+Would like to use co-ordinates to plot to map.
