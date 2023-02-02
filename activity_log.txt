@@ -174,3 +174,36 @@ So now running Superset with:
 
 t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" -p 8080:8088 apache/superset:dockerfile
 
+
+#7
+
+Moved onto London Met data import.
+
+Since the table template is already setup nicely, it is just a matter of:
+
+$ cat 2022-*.csv > all_records.csv
+
+However, because there are CSV headers that get duplicated:
+
+$ head -1 all_records.csv > all_records_clean.csv
+
+$ grep -v "^Crime ID,Month," all_records.csv >> all_records_clean.csv
+
+Realised there is a more catch-all way to grant Postgres privs:
+
+test_db=# GRANT pg_read_all_data TO test_superset;
+
+
+#8
+
+Moved back to GMP police data import.
+
+Realised the police data is split across 2 files per month:
+
+1. The initial log of a crime scene
+
+2. The later outcome of the investigation
+
+It seems that both have to be considered, to get accurate info.
+
+They share a unique crime ID value.
