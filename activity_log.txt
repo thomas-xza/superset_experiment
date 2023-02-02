@@ -11,7 +11,7 @@ Moved on to instructions at:
 
 https://hub.docker.com/r/apache/superset
 
-...more success, was able to login
+...more success, was able to login, see some sample data.
 
 Stopped container. Realised need to connect to real SQL database to import custom data.
 
@@ -37,32 +37,46 @@ https://gist.github.com/MauricioMoraes/87d76577babd4e084cba70f63c04b07d
 ...they worked!
 
 
-
 #3
 
 Began setting up Postgres DB.
 
 https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
 
-Checked v14 is actually officially supported (phew, it is)
+Checked v14 is actually officially supported by Superset (phew, it is)
 
 https://superset.apache.org/docs/installation/configuring-superset
 
 t $  sudo -i -u postgres 
 
-postgres $  createuser --interactive
-
 postgres $  createdb test_db
 
 # useradd test_db
 
-Opting to share network with host to keep localhost connections simple, connect localhost:8088.
+Opting to share network with host to keep localhost connections simple, connecting via localhost:8088.
 
 So to build and run:
 
 $ cd ~/superset_experiment.git/
 
-$ docker build .
+t $ docker build .
 
-$ docker run -d  --network=host --name superset 405bd7434a1e
+t $ docker run -d  --network=host --name 405bd7434a1e
 
+postgres $ psql
+
+postgres=# CREATE USER test_superset WITH PASSWORD 'secret_password';
+
+Then connect to it via GUI. The container is now connected to the DB!
+
+t $ docker commit __________ apache/superset:dockerfile_psql
+
+Then to run at startup:
+
+t $ docker run -d  --network=host apache/superset:dockerfile_psql
+
+
+
+#4
+
+Onto actually using the data.
