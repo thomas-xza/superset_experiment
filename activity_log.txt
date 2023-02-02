@@ -211,3 +211,62 @@ They share a unique crime ID value.
 Adding a DNS name to the Docker run now.
 
 t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" --add-host=database:192.168.1.24 -p 8080:8088 apache/superset:dockerfile
+
+Realised the outcomes of the investigations can be categorised as follows:
+
+----
+
+Red-alert crimes:
+
+Offender given suspended prison sentence
+Offender sent to prison
+Suspect charged
+
+
+Gray-area crimes:
+Offender given community sentence
+
+
+Ambiguous crimes:
+
+Court result unavailable
+Court case unable to proceed
+Action to be taken by another organisation
+Investigation complete; no suspect identified
+
+
+Not crimes(?):
+
+Defendant found not guilty
+Formal action is not in the public interest
+
+----
+
+
+9#
+
+Imported all 2018-01 to 2019-06 GMP data, after joining the CSVs with Shell.
+
+Building new SQL statement, based on joining the two data sources:
+
+SELECT
+crime_data_gmp_street.longitude,
+crime_data_gmp_street.latitude,
+crime_data_gmp_outcomes.outcome_type
+FROM crime_data_gmp_street
+JOIN crime_data_gmp_outcomes
+ON
+crime_data_gmp_street.crime_id =
+crime_data_gmp_outcomes.crime_id
+WHERE outcome_type
+LIKE 'Offender given suspended prison sentence'
+OR outcome_type
+LIKE 'Offender sent to prison';
+
+Plotted to map to view high crime areas.
+
+Then imported the 2016-07 to 2018-12 GMP data, this time ran `sort *.csv | uniq` beforehand
+
+Did a big SELECT COUNT(*) statement to ensure the numbers are reasonable (no duplicates).
+
+Plotted 2016-07 to 2019-06 to map, using same SQL statement.
