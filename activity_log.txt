@@ -139,3 +139,19 @@ Data is now accessible from within Apache Superset!
 Onto visualising data...
 
 Would like to use co-ordinates to plot to map.
+
+Fixing a mistake in column naming (used a generic Postgres value name	):
+
+test_db=# ALTER TABLE crime_data_essex
+test_db-# RENAME COLUMN type TO crime_type;
+
+Created a dataset of violence crime via SQL statement:
+
+SELECT longitude,latitude,crime_type FROM crime_data_essex WHERE crime_type LIKE 'Violence%';
+
+There has been a mismatch between expected data types, whilst trying to plot to a map.
+A weakness of Superset is it doesn't tell you what data type the chart is expecting?
+
+Found a recommendation for data types at:
+
+https://stackoverflow.com/questions/1196415/what-datatype-to-use-when-storing-latitude-and-longitude-data-in-sql-databases
