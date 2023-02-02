@@ -1,4 +1,1 @@
-
-##  Allows requests from Docker IPs to connect to test_db database as test_db user.
-
-host test_db test_user 172.17.0.0/16 trust
+host    all             all             172.17.0.0/16            trust
