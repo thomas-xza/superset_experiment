@@ -12,7 +12,7 @@ LSOA name,
 Outcome type
 */
 
-CREATE TABLE crime_data_gmp_outcome (
+CREATE TABLE crime_data_gmp_outcomes (
     id SERIAL,
     crime_id VARCHAR(128),
     month VARCHAR(8),
