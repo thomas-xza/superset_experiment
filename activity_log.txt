@@ -168,5 +168,9 @@ So back to:
 
 t $ docker run -d -p 8080:8088 apache/superset:dockerfile
 
+Realised it was not actually a bug, just a lack of Mapbox API key!
 
+So now running Superset with:
+
+t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" -p 8080:8088 apache/superset:dockerfile
 
