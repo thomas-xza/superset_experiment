@@ -1,4 +1,6 @@
 
+##  Activity log
+
 #1
 
 Tried following instructions at:
@@ -243,7 +245,7 @@ Formal action is not in the public interest
 ----
 
 
-9#
+#9
 
 Imported all 2018-01 to 2019-06 GMP data, after joining the CSVs with Shell.
 
@@ -270,3 +272,31 @@ Then imported the 2016-07 to 2018-12 GMP data, this time ran `sort *.csv | uniq`
 Did a big SELECT COUNT(*) statement to ensure the numbers are reasonable (no duplicates).
 
 Plotted 2016-07 to 2019-06 to map, using same SQL statement.
+
+
+#10
+
+Began looking at interest rate data from major banks.
+
+Found passable CSVs for Federal Reserve, Bank of England, EU data.
+
+Realised I need to know what format the data is expected to be in by Superset, before plotting it.
+
+It seems Superset only tells you when you try to plot data? Nonetheless, line graph requires DATETIME.
+
+https://www.postgresql.org/docs/current/datatype-datetime.html
+
+The USA government data required the least work, or at least, someone else had already done the work.
+
+The European Central Bank required the most work, and had various quirks/hacks going on.
+
+Inserted the data into 3 tables, but unfortunately there is no simple way to merge them into 1 graph with Superset.
+
+There is a chart option for 2 different data sets, but compared to traditional spreadsheet software, beginning to feel the limitations of this software!
+
+
+#11
+
+Concluded Apache Superset is strongest on maps.
+
+Decided to look at World Bank data as a result.
