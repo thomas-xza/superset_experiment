@@ -1,0 +1,261 @@
+country,country_code,2010,2020
+"Aruba","ABW",2,2
+"Africa Eastern and Southern","AFE",32,30
+"Afghanistan","AFG",1,1
+"Africa Western and Central","AFW",20,19
+"Angola","AGO",57,53
+"Albania","ALB",28,28
+"Andorra","AND",34,34
+"Arab World","ARB",3,2
+"United Arab Emirates","ARE",4,4
+"Argentina","ARG",11,10
+"Armenia","ARM",11,11
+"American Samoa","ASM",87,85
+"Antigua and Barbuda","ATG",19,18
+"Australia","AUS",16,17
+"Austria","AUT",46,47
+"Azerbaijan","AZE",12,13
+"Burundi","BDI",7,10
+"Belgium","BEL",22,22
+"Benin","BEN",32,27
+"Burkina Faso","BFA",24,22
+"Bangladesh","BGD",14,14
+"Bulgaria","BGR",34,35
+"Bahrain","BHR",0,0
+"Bahamas, The","BHS",50,50
+"Bosnia and Herzegovina","BIH",41,42
+"Belarus","BLR",42,43
+"Belize","BLZ",60,55
+"Bermuda","BMU",18,18
+"Bolivia","BOL",49,46
+"Brazil","BRA",61,59
+"Barbados","BRB",14,14
+"Brunei Darussalam","BRN",72,72
+"Bhutan","BTN",70,71
+"Botswana","BWA",29,26
+"Central African Republic","CAF",36,35
+"Canada","CAN",38,38
+"Central Europe and the Baltics","CEB",33,34
+"Switzerland","CHE",31,32
+"Chile","CHL",22,24
+"China","CHN",21,23
+"Cote d'Ivoire","CIV",12,8
+"Cameroon","CMR",44,43
+"Congo, Dem. Rep.","COD",60,55
+"Congo, Rep.","COG",64,64
+"Colombia","COL",54,53
+"Comoros","COM",20,17
+"Cabo Verde","CPV",10,11
+"Costa Rica","CRI",56,59
+"Caribbean small states","CSS",90,89
+"Cuba","CUB",27,31
+"Curacao","CUW",,0
+"Cayman Islands","CYM",53,53
+"Cyprus","CYP",18,18
+"Czechia","CZE",34,34
+"Germany","DEU",32,32
+"Djibouti","DJI",0,0
+"Dominica","DMA",63,63
+"Denmark","DNK",14,15
+"Dominican Republic","DOM",42,44
+"Algeria","DZA",0,0
+"East Asia & Pacific (excluding high income)","EAP",29,30
+"Early-demographic dividend","EAR",23,22
+"East Asia & Pacific","EAS",26,27
+"Europe & Central Asia (excluding high income)","ECA",39,39
+"Europe & Central Asia","ECS",38,38
+"Ecuador","ECU",52,50
+"Egypt, Arab Rep.","EGY",0,0
+"Euro area","EMU",37,38
+"Eritrea","ERI",8,8
+"Spain","ESP",37,37
+"Estonia","EST",55,57
+"Ethiopia","ETH",15,15
+"European Union","EUU",39,39
+"Fragile and conflict affected situations","FCS",24,23
+"Finland","FIN",73,73
+"Fiji","FJI",58,62
+"France","FRA",29,31
+"Faroe Islands","FRO",0,0
+"Micronesia, Fed. Sts.","FSM",91,92
+"Gabon","GAB",91,91
+"United Kingdom","GBR",12,13
+"Georgia","GEO",40,40
+"Ghana","GHA",34,35
+"Gibraltar","GIB",0,0
+"Guinea","GIN",26,25
+"Gambia, The","GMB",29,23
+"Guinea-Bissau","GNB",73,70
+"Equatorial Guinea","GNQ",90,87
+"Greece","GRC",30,30
+"Grenada","GRD",52,52
+"Greenland","GRL",0,0
+"Guatemala","GTM",34,32
+"Guam","GUM",44,51
+"Guyana","GUY",94,93
+"High income","HIC",29,29
+"Honduras","HND",58,56
+"Heavily indebted poor countries (HIPC)","HPC",28,27
+"Croatia","HRV",34,34
+"Haiti","HTI",13,12
+"Hungary","HUN",22,22
+"IBRD only","IBD",34,33
+"IDA & IBRD total","IBT",32,31
+"IDA total","IDA",27,25
+"IDA blend","IDB",30,29
+"Indonesia","IDN",53,49
+"IDA only","IDX",26,24
+"Isle of Man","IMN",6,6
+"India","IND",23,24
+"Ireland","IRL",10,11
+"Iran, Islamic Rep.","IRN",6,6
+"Iraq","IRQ",1,1
+"Iceland","ISL",0,0
+"Israel","ISR",7,6
+"Italy","ITA",30,32
+"Jamaica","JAM",51,55
+"Jordan","JOR",1,1
+"Japan","JPN",68,68
+"Kazakhstan","KAZ",1,1
+"Kenya","KEN",6,6
+"Kyrgyz Republic","KGZ",6,6
+"Cambodia","KHM",59,45
+"Kiribati","KIR",1,1
+"St. Kitts and Nevis","KNA",42,42
+"Korea, Rep.","KOR",65,64
+"Kuwait","KWT",0,0
+"Latin America & Caribbean (excluding high income)","LAC",48,47
+"Lao PDR","LAO",73,71
+"Lebanon","LBN",13,14
+"Liberia","LBR",82,79
+"Libya","LBY",0,0
+"St. Lucia","LCA",34,34
+"Latin America & Caribbean","LCN",47,46
+"Least developed countries: UN classification","LDC",28,26
+"Low income","LIC",23,22
+"Liechtenstein","LIE",41,41
+"Sri Lanka","LKA",33,34
+"Lower middle income","LMC",26,25
+"Low & middle income","LMY",32,31
+"Lesotho","LSO",1,1
+"Late-demographic dividend","LTE",39,39
+"Lithuania","LTU",34,35
+"Luxembourg","LUX",34,34
+"Latvia","LVA",54,54
+"St. Martin (French part)","MAF",,24
+"Morocco","MAR",12,12
+"Monaco","MCO",0,0
+"Moldova","MDA",11,11
+"Madagascar","MDG",21,21
+"Maldives","MDV",2,2
+"Middle East & North Africa","MEA",2,2
+"Mexico","MEX",34,33
+"Marshall Islands","MHL",52,52
+"Middle income","MIC",33,33
+"North Macedonia","MKD",38,39
+"Mali","MLI",10,10
+"Malta","MLT",1,1
+"Myanmar","MMR",48,43
+"Middle East & North Africa (excluding high income)","MNA",2,2
+"Montenegro","MNE",61,61
+"Mongolia","MNG",9,9
+"Northern Mariana Islands","MNP",65,52
+"Mozambique","MOZ",49,46
+"Mauritania","MRT",0,0
+"Mauritius","MUS",18,19
+"Malawi","MWI",28,23
+"Malaysia","MYS",57,58
+"North America","NAC",36,36
+"Namibia","NAM",8,8
+"New Caledonia","NCL",45,45
+"Niger","NER",0,0
+"Nigeria","NGA",25,23
+"Nicaragua","NIC",34,28
+"Netherlands","NLD",11,10
+"Norway","NOR",33,33
+"Nepal","NPL",41,41
+"Nauru","NRU",0,0
+"New Zealand","NZL",37,37
+"OECD members","OED",32,32
+"Oman","OMN",0,0
+"Other small states","OSS",29,28
+"Pakistan","PAK",5,4
+"Panama","PAN",58,56
+"Peru","PER",57,56
+"Philippines","PHL",22,24
+"Palau","PLW",88,90
+"Papua New Guinea","PNG",79,79
+"Poland","POL",30,30
+"Pre-demographic dividend","PRE",27,25
+"Puerto Rico","PRI",55,55
+"Korea, Dem. People's Rep.","PRK",51,50
+"Portugal","PRT",35,36
+"Paraguay","PRY",49,40
+"West Bank and Gaza","PSE",1,1
+"Pacific island small states","PSS",67,68
+"Post-demographic dividend","PST",31,32
+"French Polynesia","PYF",43,43
+"Qatar","QAT",0,0
+"Romania","ROU",28,30
+"Russian Federation","RUS",49,49
+"Rwanda","RWA",10,11
+"South Asia","SAS",18,18
+"Saudi Arabia","SAU",0,0
+"Sudan","SDN",11,9
+"Senegal","SEN",43,41
+"Singapore","SGP",25,21
+"Solomon Islands","SLB",90,90
+"Sierra Leone","SLE",37,35
+"El Salvador","SLV",30,28
+"San Marino","SMR",16,16
+"Somalia","SOM",10,9
+"Serbia","SRB",31,31
+"Sub-Saharan Africa (excluding high income)","SSA",28,26
+"South Sudan","SSD",,11
+"Sub-Saharan Africa","SSF",28,26
+"Small states","SST",40,39
+"Sao Tome and Principe","STP",60,54
+"Suriname","SUR",98,97
+"Slovak Republic","SVK",39,40
+"Slovenia","SVN",61,61
+"Sweden","SWE",68,68
+"Eswatini","SWZ",28,28
+"Sint Maarten (Dutch part)","SXM",,10
+"Seychelles","SYC",73,73
+"Syrian Arab Republic","SYR",2,2
+"Turks and Caicos Islands","TCA",11,11
+"Chad","TCD",4,3
+"East Asia & Pacific (IDA & IBRD countries)","TEA",29,30
+"Europe & Central Asia (IDA & IBRD countries)","TEC",39,39
+"Togo","TGO",22,22
+"Thailand","THA",39,38
+"Tajikistan","TJK",2,3
+"Turkmenistan","TKM",8,8
+"Latin America & the Caribbean (IDA & IBRD countries)","TLA",48,46
+"Timor-Leste","TLS",62,61
+"Middle East & North Africa (IDA & IBRD countries)","TMN",2,2
+"Tonga","TON",12,12
+"South Asia (IDA & IBRD)","TSA",18,18
+"Sub-Saharan Africa (IDA & IBRD countries)","TSS",28,26
+"Trinidad and Tobago","TTO",45,44
+"Tunisia","TUN",4,4
+"Turkiye","TUR",27,28
+"Tuvalu","TUV",33,33
+"Tanzania","TZA",56,51
+"Uganda","UGA",13,11
+"Ukraine","UKR",16,16
+"Upper middle income","UMC",37,37
+"Uruguay","URY",9,11
+"United States","USA",33,33
+"Uzbekistan","UZB",7,8
+"St. Vincent and the Grenadines","VCT",73,73
+"Venezuela, RB","VEN",53,52
+"British Virgin Islands","VGB",24,24
+"Virgin Islands (U.S.)","VIR",52,56
+"Vietnam","VNM",42,46
+"Vanuatu","VUT",36,36
+"Samoa","WSM",58,58
+"Yemen, Rep.","YEM",1,1
+"South Africa","ZAF",14,14
+"Zambia","ZMB",62,60
+"Zimbabwe","ZWE",46,45

@@ -1,0 +1,9 @@
+	
+CREATE TABLE worldbank_rural_percentage_country (
+    id SERIAL,
+    country VARCHAR(64),
+    country_code VARCHAR(4),
+    2010 SMALLINT,
+    2020 SMALLINT,
+    PRIMARY KEY (id)
+);

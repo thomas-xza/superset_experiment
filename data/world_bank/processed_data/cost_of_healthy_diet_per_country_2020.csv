@@ -1,0 +1,172 @@
+country,country_code,cost
+Australia,AUS,2.561
+Belarus,BLR,3.31
+Albania,ALB,4.197
+Algeria,DZA,3.76
+Angola,AGO,4.534
+Antigua and Barbuda,ATG,4.504
+Armenia,ARM,3.247
+Aruba,ABW,4.138
+Austria,AUT,2.981
+Azerbaijan,AZE,2.533
+"Bahamas, The",BHS,4.488
+Bahrain,BHR,3.835
+Bangladesh,BGD,3.064
+Belgium,BEL,3.13
+Belize,BLZ,2.14
+Benin,BEN,3.707
+Bermuda,BMU,3.616
+Bhutan,BTN,5.029
+Bolivia,BOL,3.755
+Bosnia and Herzegovina,BIH,3.995
+Botswana,BWA,3.701
+Brazil,BRA,3.084
+British Virgin Islands,VGB,3.337
+Brunei Darussalam,BRN,4.405
+Bulgaria,BGR,4.108
+Burkina Faso,BFA,3.345
+Burundi,BDI,2.943
+Cabo Verde,CPV,3.563
+Cambodia,KHM,3.888
+Cameroon,CMR,2.808
+Canada,CAN,3.008
+Cayman Islands,CYM,2.765
+Central African Republic,CAF,3.615
+Chad,TCD,2.821
+Chile,CHL,3.402
+China,CHN,2.983
+Colombia,COL,3.065
+"Congo, Dem. Rep.",COD,2.077
+"Congo, Rep.",COG,3.422
+Costa Rica,CRI,4.11
+Cte d'Ivoire,CIV,3.61
+Croatia,HRV,4.277
+Curacao,CUW,3.328
+Cyprus,CYP,2.969
+Czech Republic,CZE,2.966
+Denmark,DNK,2.544
+Djibouti,DJI,3.112
+Dominica,DMA,4.345
+Dominican Republic,DOM,3.884
+East Asia & Pacific,EAS,4.054
+Ecuador,ECU,2.928
+"Egypt, Arab Rep.",EGY,3.369
+Equatorial Guinea,GNQ,3.676
+Estonia,EST,3.308
+Eswatini,SWZ,3.391
+Ethiopia,ETH,3.366
+Europe & Central Asia,ECS,3.139
+Fiji,FJI,3.914
+Finland,FIN,2.712
+France,FRA,3.219
+Gabon,GAB,3.552
+"Gambia, The",GMB,3.11
+Germany,DEU,3.025
+Ghana,GHA,4.033
+Greece,GRC,3.13
+Grenada,GRD,5.796
+Guinea,GIN,4.127
+Guinea-Bissau,GNB,3.505
+Guyana,GUY,4.889
+Haiti,HTI,4.49
+Honduras,HND,3.486
+"Hong Kong SAR, China",HKG,4.513
+Hungary,HUN,3.488
+Iceland,ISL,2.414
+India,IND,2.97
+Indonesia,IDN,4.466
+"Iran, Islamic Rep.",IRN,3.55
+Iraq,IRQ,3.54
+Ireland,IRL,2.225
+Israel,ISR,2.492
+Italy,ITA,3.144
+Jamaica,JAM,6.681
+Japan,JPN,5.808
+Jordan,JOR,3.614
+Kazakhstan,KAZ,2.657
+Kenya,KEN,2.968
+"Korea, Rep.",KOR,5.183
+Kuwait,KWT,3.606
+Kyrgyz Republic,KGZ,3.18
+Lao PDR,LAO,4.141
+Latin America & Caribbean,LCN,3.894
+Latvia,LVA,3.24
+Lesotho,LSO,4.266
+Liberia,LBR,3.903
+Lithuania,LTU,3.099
+Luxembourg,LUX,2.661
+Madagascar,MDG,3.181
+Malawi,MWI,3.149
+Malaysia,MYS,3.538
+Maldives,MDV,3.861
+Mali,MLI,3.053
+Malta,MLT,3.769
+Mauritania,MRT,3.692
+Mauritius,MUS,3.604
+Mexico,MEX,3.293
+Middle East & North Africa,MEA,3.37
+Moldova,MDA,2.814
+Mongolia,MNG,5.103
+Montenegro,MNE,3.494
+Morocco,MAR,2.797
+Mozambique,MOZ,3.228
+Myanmar,MMR,4.186
+Namibia,NAM,3.52
+Nepal,NPL,4.362
+Netherlands,NLD,2.991
+New Zealand,NZL,2.723
+Nicaragua,NIC,3.335
+Niger,NER,2.859
+Nigeria,NGA,4.093
+North America,NAC,3.336
+North Macedonia,MKD,3.427
+Norway,NOR,3.471
+Oman,OMN,3.021
+Pakistan,PAK,3.685
+Panama,PAN,4.476
+Paraguay,PRY,3.543
+Peru,PER,3.285
+Philippines,PHL,4.108
+Poland,POL,3.17
+Portugal,PRT,2.656
+Qatar,QAT,2.577
+Romania,ROU,3.191
+Russian Federation,RUS,3.42
+Rwanda,RWA,2.698
+Sao Tome and Principe,STP,3.551
+Saudi Arabia,SAU,4.148
+Senegal,SEN,2.33
+Serbia,SRB,4.246
+Seychelles,SYC,3.801
+Sierra Leone,SLE,2.893
+Singapore,SGP,3.064
+Sint Maarten (Dutch part),SXM,5.36
+Slovak Republic,SVK,3.15
+Slovenia,SVN,3.07
+South Africa,ZAF,4.298
+South Asia,SAS,3.842
+Spain,ESP,2.838
+Sri Lanka,LKA,3.923
+St. Kitts and Nevis,KNA,3.405
+St. Lucia,LCA,3.594
+St. Vincent and the Grenadines,VCT,4.454
+Sub-Saharan Africa,SSF,3.474
+Sudan,SDN,4.308
+Suriname,SUR,5.739
+Sweden,SWE,3.339
+Switzerland,CHE,2.659
+Tajikistan,TJK,3.48
+Tanzania,TZA,2.736
+Thailand,THA,4.321
+Trinidad and Tobago,TTO,4.224
+Tunisia,TUN,3.639
+Trkiye,TUR,3.029
+Turks and Caicos Islands,TCA,3.095
+Uganda,UGA,2.658
+United Arab Emirates,ARE,3.111
+United Kingdom,GBR,1.912
+United States,USA,3.383
+Uruguay,URY,3.414
+Vietnam,VNM,4.072
+West Bank and Gaza,PSE,3.356
+Zambia,ZMB,3.3
