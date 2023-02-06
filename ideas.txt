@@ -10,7 +10,9 @@
 + throwback to women in parliament or worldbank generally
 
 worldbank
-Cost of the least expensive locally-available vegetables needed to meet intake levels recommended in food-based dietary guidelines, in 2017 PPP dollar/person/day. Data available for 2017.
+
+- cost of food per country
+
+- forestry percenage by rural population percentage per country
 
 
-##  china trip flight map

@@ -300,3 +300,56 @@ There is a chart option for 2 different data sets, but compared to traditional s
 Concluded Apache Superset is strongest on maps.
 
 Decided to look at World Bank data as a result.
+
+Unfortunately they have this "DataBank" web app for accessing data but it doesn't always work.
+
+Realised also that, to keep Docker container portable, need to bind Postgres to Docker IP.
+
+New Docker commands:
+
+t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" --add-host=postgres:172.17.0.1 -p 8080:8088 apache/superset:datasetsv1
+
+Found that Postgres is starting before Docker at boot, needed some manual SystemD changes to correct the ordering.
+
+Found WorldBank data CSV can contain alot of redundant columns - can either be selective via Postgres or Python.
+
+With Python, hit issues with Unicode and limitations of `csv` library. So, opted to try out Postgres.
+
+Hitting different errors (data type mismatch) with Postgres' import tools, again due to bad data. Unfortunately no way for Postgres to ignore erroneous lines automatically.
+
+One remedy to limitations of Postgres suggested online is to validate the data via Python........
+
+Anyway at this point will just use `sed`.
+
+...aaaand right back to unicode errors. Back to Python. Turns out you fix unicode errors most simply with:
+
+with open(filename, "rb") as f:
+
+    return f.read().decode(encoding='utf-8', errors='ignore')
+	
+Finally plotted the World Bank data.
+
+
+#12
+
+After checking news about Turkey earthquake, thought it may be worthwhile plotting earthquake data.
+
+https://earthquake.usgs.gov/earthquakes/search/
+
+However, the US government funded website (above) which allegedly outputs CSVs did not work.
+
+Back to World Bank data, found gold reserves by country, but unfortunately already automatically plotted.
+
+Could combine two data sets perhaps, for something novel, to seek correlations.
+
+Percentage of rural population against percentage of land which is forest?
+
+A simple subtraction would probably suffice, followed by plotting in a way that shows the difference.
+
+For example, if 50% forest but only 25% rural, then that is a +25% score.
+
+On the contrary, 75% rural but 50% forest would be -25% score.
+
+These scores then plotted to a world map, as well as a line graph with the two data sets.
+
+Another idea: compare the rural population of each country over a 10 year gap.
