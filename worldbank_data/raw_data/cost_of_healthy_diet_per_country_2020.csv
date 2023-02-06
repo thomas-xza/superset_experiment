@@ -1,4 +1,3 @@
-Classification Name,Classification Code,Country Name,Country Code,Time,Time Code,Cost of a healthy diet [CoHD]
 Food Prices for Nutrition Data,FPN,Australia,AUS,2020,YR2020,2.561
 Food Prices for Nutrition Data,FPN,Belarus,BLR,2020,YR2020,3.31
 Food Prices for Nutrition Data,FPN,Barbados,BRB,2020,YR2020,..
@@ -185,8 +184,3 @@ Food Prices for Nutrition Data,FPN,West Bank and Gaza,PSE,2020,YR2020,3.356
 Food Prices for Nutrition Data,FPN,World,WLD,2020,YR2020,3.537
 Food Prices for Nutrition Data,FPN,Zambia,ZMB,2020,YR2020,3.3
 Food Prices for Nutrition Data,FPN,Zimbabwe,ZWE,2020,YR2020,..
-,,,,,,
-,,,,,,
-,,,,,,
-Data from database: Food Prices for Nutrition,,,,,,
-Last Updated: 07/05/2022,,,,,,
