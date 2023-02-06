@@ -13,8 +13,6 @@ def main():
 
     data = finalise_data(data)
 
-    print(data)
-
     write_data(data)
 
     

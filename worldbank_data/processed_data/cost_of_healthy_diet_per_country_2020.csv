@@ -1,3 +1,4 @@
+country,country_code,cost
 Australia,AUS,2.561
 Belarus,BLR,3.31
 Albania,ALB,4.197
@@ -168,7 +169,4 @@ United States,USA,3.383
 Uruguay,URY,3.414
 Vietnam,VNM,4.072
 West Bank and Gaza,PSE,3.356
-Zambia,ZMB,3.3
-
-PSE,3.356
 Zambia,ZMB,3.3
