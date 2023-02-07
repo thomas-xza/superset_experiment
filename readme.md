@@ -1,7 +1,7 @@
 
 ##  Activity log
 
-#1
+# #1
 
 Tried following instructions at:
 
@@ -18,7 +18,7 @@ https://hub.docker.com/r/apache/superset
 Stopped container. Realised need to connect to real SQL database to import custom data.
 
 
-#2
+# #2
 
 Installed Postgres DB to host.
 
@@ -39,7 +39,7 @@ https://gist.github.com/MauricioMoraes/87d76577babd4e084cba70f63c04b07d
 ...they worked!
 
 
-#3
+# #3
 
 Began setting up Postgres DB.
 
@@ -49,35 +49,35 @@ Checked v14 is actually officially supported by Superset (phew, it is)
 
 https://superset.apache.org/docs/installation/configuring-superset
 
-t $  sudo -i -u postgres 
+    t $  sudo -i -u postgres 
 
 postgres $  createdb test_db
 
-# useradd test_db
+    # useradd test_db
 
 Opting to share network with host to keep localhost connections simple, connecting via localhost:8088.
 
 So to build and run:
 
-$ cd ~/superset_experiment.git/
+    $ cd ~/superset_experiment.git/
 
-t $ docker build .
+    t $ docker build .
 
-postgres $ psql
+    postgres $ psql
 
-postgres=# CREATE USER test_superset WITH PASSWORD 'secret_password';
+    postgres=# CREATE USER test_superset WITH PASSWORD 'secret_password';
 
 Then connect to it via GUI. The container is now connected to the DB!
 
-t $ docker commit __________ apache/superset:dockerfile_psql
+    t $ docker commit __________ apache/superset:dockerfile_psql
 
 Then to run at startup:
 
-t $ docker run -d  --network=host apache/superset:dockerfile_psql
+    t $ docker run -d  --network=host apache/superset:dockerfile_psql
 
 
 
-#4
+# #4
 
 Onto sourcing some data.
 
@@ -96,7 +96,7 @@ Tried earlier data of 2020, but the .zip was empty
 Moved on to Essex 2022-12 data, found it is more comprehensive.
 
 
-#5
+# #5
 
 Onto importing data.
 
@@ -110,28 +110,28 @@ https://www.postgresql.org/docs/current/sql-createtable.html
 
 Put SQL commands into a file, generated a table that fits CSV with:
 
-$ psql -d test_db -a -f /tmp/create_table_police_data.sql
+    $ psql -d test_db -a -f /tmp/create_table_police_data.sql
 
 Imported CSV to table with:
 
-$ psql -d test_db -a -f /tmp/import_csv_police_data.sql
+    $ psql -d test_db -a -f /tmp/import_csv_police_data.sql
 
 OK the data appears to have fit OK, when running:
 
-t $ docker run -d  --network=host --name 405bd7434a1e
+    t $ docker run -d  --network=host --name 405bd7434a1e
 
-postgres=# SELECT longitude,latitude FROM crime_data_essex;
+    postgres=# SELECT longitude,latitude FROM crime_data_essex;
 
 Hit some permission errors when trying to access via Supetset, found fix at:
 
 https://www.postgresql.r2schools.com/error-permission-denied-for-table-table_name-in-postgresql/
 
-GRANT ALL PRIVILEGES ON TABLE crime_data_essex TO test_superset;
+    GRANT ALL PRIVILEGES ON TABLE crime_data_essex TO test_superset;
 
 Data is now accessible from within Apache Superset!
 
 
-#6
+# #6
 
 Onto visualising data...
 
@@ -139,12 +139,12 @@ Would like to use co-ordinates to plot to map.
 
 Fixing a mistake in column naming (used a generic Postgres value name	):
 
-test_db=# ALTER TABLE crime_data_essex
-test_db-# RENAME COLUMN type TO crime_type;
+    test_db=# ALTER TABLE crime_data_essex
+    test_db-# RENAME COLUMN type TO crime_type;
 
 Created a dataset of violence crime via SQL statement:
 
-SELECT longitude,latitude,crime_type FROM crime_data_essex WHERE crime_type LIKE 'Violence%';
+    SELECT longitude,latitude,crime_type FROM crime_data_essex WHERE crime_type LIKE 'Violence%';
 
 There has been a mismatch between expected data types, whilst trying to plot to a map.
 A weakness of Superset is it doesn't tell you what data type the chart is expecting?
@@ -157,46 +157,46 @@ Ah it turns out another error in data, as some fields are NULL.
 
 So new SQL statement:
 
-SELECT longitude,latitude,crime_type
-FROM crime_data_essex
-WHERE longitude is NOT NULL
-AND latitude is NOT NULL
-AND crime_type LIKE 'Violence%';
+    SELECT longitude,latitude,crime_type
+    FROM crime_data_essex
+    WHERE longitude is NOT NULL
+    AND latitude is NOT NULL
+    AND crime_type LIKE 'Violence%';
 
 Discovered another bug.
 If the Docker container shares with the host, this breaks the container's internet connectivity.
 
 So back to:
 
-t $ docker run -d -p 8080:8088 apache/superset:dockerfile
+    t $ docker run -d -p 8080:8088 apache/superset:dockerfile
 
 Realised it was not actually a bug, just a lack of Mapbox API key!
 
 So now running Superset with:
 
-t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" -p 8080:8088 apache/superset:dockerfile
+    t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" -p 8080:8088 apache/superset:dockerfile
 
 
-#7
+# #7
 
 Moved onto London Met data import.
 
 Since the table template is already setup nicely, it is just a matter of:
 
-$ cat 2022-*.csv > all_records.csv
+    $ cat 2022-*.csv > all_records.csv
 
 However, because there are CSV headers that get duplicated:
 
-$ head -1 all_records.csv > all_records_clean.csv
+    $ head -1 all_records.csv > all_records_clean.csv
 
-$ grep -v "^Crime ID,Month," all_records.csv >> all_records_clean.csv
+    $ grep -v "^Crime ID,Month," all_records.csv >> all_records_clean.csv
 
 Realised there is a more catch-all way to grant Postgres privs:
 
-test_db=# GRANT pg_read_all_data TO test_superset;
+    test_db=# GRANT pg_read_all_data TO test_superset;
 
 
-#8
+# #8
 
 Moved back to GMP police data import.
 
@@ -212,7 +212,7 @@ They share a unique crime ID value.
 
 Adding a DNS name to the Docker run now.
 
-t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" --add-host=database:192.168.1.24 -p 8080:8088 apache/superset:dockerfile
+    t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" --add-host=database:192.168.1.24 -p 8080:8088 apache/superset:dockerfile
 
 Realised the outcomes of the investigations can be categorised as follows:
 
@@ -245,25 +245,25 @@ Formal action is not in the public interest
 ----
 
 
-#9
+# #9
 
 Imported all 2018-01 to 2019-06 GMP data, after joining the CSVs with Shell.
 
 Building new SQL statement, based on joining the two data sources:
 
-SELECT
-crime_data_gmp_street.longitude,
-crime_data_gmp_street.latitude,
-crime_data_gmp_outcomes.outcome_type
-FROM crime_data_gmp_street
-JOIN crime_data_gmp_outcomes
-ON
-crime_data_gmp_street.crime_id =
-crime_data_gmp_outcomes.crime_id
-WHERE outcome_type
-LIKE 'Offender given suspended prison sentence'
-OR outcome_type
-LIKE 'Offender sent to prison';
+    SELECT
+    crime_data_gmp_street.longitude,
+    crime_data_gmp_street.latitude,
+    crime_data_gmp_outcomes.outcome_type
+    FROM crime_data_gmp_street
+    JOIN crime_data_gmp_outcomes
+    ON
+    crime_data_gmp_street.crime_id =
+    crime_data_gmp_outcomes.crime_id
+    WHERE outcome_type
+    LIKE 'Offender given suspended prison sentence'
+    OR outcome_type
+    LIKE 'Offender sent to prison';
 
 Plotted to map to view high crime areas.
 
@@ -274,7 +274,7 @@ Did a big SELECT COUNT(*) statement to ensure the numbers are reasonable (no dup
 Plotted 2016-07 to 2019-06 to map, using same SQL statement.
 
 
-#10
+# #10
 
 Began looking at interest rate data from major banks.
 
@@ -295,7 +295,7 @@ Inserted the data into 3 tables, but unfortunately there is no simple way to mer
 There is a chart option for 2 different data sets, but compared to traditional spreadsheet software, beginning to feel the limitations of this software!
 
 
-#11
+# #11
 
 Concluded Apache Superset is strongest on maps.
 
@@ -307,7 +307,7 @@ Realised also that, to keep Docker container portable, need to bind Postgres to 
 
 New Docker commands:
 
-t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" --add-host=postgres:172.17.0.1 -p 8080:8088 apache/superset:datasetsv1
+    t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" --add-host=postgres:172.17.0.1 -p 8080:8088 apache/superset:datasetsv1
 
 Found that Postgres is starting before Docker at boot, needed some manual SystemD changes to correct the ordering.
 
@@ -323,14 +323,14 @@ Anyway at this point will just use `sed`.
 
 ...aaaand right back to unicode errors. Back to Python. Turns out you fix unicode errors most simply with:
 
-with open(filename, "rb") as f:
+    with open(filename, "rb") as f:
 
-    return f.read().decode(encoding='utf-8', errors='ignore')
+        return f.read().decode(encoding='utf-8', errors='ignore')
 	
 Finally plotted the World Bank data.
 
 
-#12
+# #12
 
 After checking news about Turkey earthquake, thought it may be worthwhile plotting earthquake data.
 
@@ -357,7 +357,7 @@ Another idea: compare the rural population of each country over a 10 year gap.
 Plotted the above, will do the rural/forestry plotted graph next.
 
 
-#13
+# #13
 
 Copying all data (Docker container and Postgres DB) to new web server, for portability/redundancy.
 
@@ -367,15 +367,15 @@ Drop in a few Postgres files/patches from client into /etc/
 
 Then export and import data:
 
-postgres:client $ pg_dump test_db > test_db.sql
+    postgres:client $ pg_dump test_db > test_db.sql
 
-postgres:server $ createdb test_db
+    postgres:server $ createdb test_db
 
-postgres:server $ psql
+    postgres:server $ psql
 
-postgres=# CREATE USER test_superset WITH PASSWORD 'secret_here';
+    postgres=# CREATE USER test_superset WITH PASSWORD 'secret_here';
 
-postgres:server $ psql -d test_db -f test_db.sql
+    postgres:server $ psql -d test_db -f test_db.sql
 
 Data migration as simple as that!
 
@@ -387,41 +387,41 @@ https://docs.docker.com/engine/reference/commandline/image_import/
 
 Change the admin password...
 
-# docker run [...]
+    # docker run [...]
 
-# docker exec -it superset_app /bin/bash
+    # docker exec -it superset_app /bin/bash
 
 superset_app $ superset fab reset-password --username admin --password "new_password"
 
-# docker commit [...]
+    # docker commit [...]
 
 Then setup Apache with Certbot:
 
-# apt install apache2
-# a2enmod proxy
-# a2enmod proxy_http
-# a2enmod proxy_balancer
-# a2enmod lbmethod_byrequests
+    # apt install apache2
+    # a2enmod proxy
+    # a2enmod proxy_http
+    # a2enmod proxy_balancer
+    # a2enmod lbmethod_byrequests
 
 Then insert above </VirtualHost> in /etc/apache2/sites-available/000-default-le-ssl.conf the following:
 
-ProxyPass / http://localhost:8080/
-ProxyPassReverse / http://localhost:8080/
+    ProxyPass / http://localhost:8080/
+    ProxyPassReverse / http://localhost:8080/
 
-# service apache2 restart
+    # service apache2 restart
 
 Then manually grant permissions:
 
-postgres $ psql -d test_db
+    postgres $ psql -d test_db
 
-test_db=# GRANT pg_read_all_data TO test_superset;
+    test_db=# GRANT pg_read_all_data TO test_superset;
 
 Also turn off ufw:
 
-# systemctl disable ufw
+    # systemctl disable ufw
 
 Dropped the `docker run` command into crontab:
 
-@reboot	    docker run [...]
+    @reboot	    docker run [...]
 
 Now everyting works at boot.
