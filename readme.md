@@ -353,3 +353,29 @@ On the contrary, 75% rural but 50% forest would be -25% score.
 These scores then plotted to a world map, as well as a line graph with the two data sets.
 
 Another idea: compare the rural population of each country over a 10 year gap.
+
+Plotted the above, will do the rural/forestry plotted graph next.
+
+
+#13
+
+Copying all data (Docker container and Postgres DB) to new web server, for portability.
+
+https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository
+
+postgres $ createdb test_db
+
+postgres $ psql
+
+postgres=# CREATE USER test_superset WITH PASSWORD 'secret_here';
+
+postgres $ psql -d test_db -f test_db.sql
+
+Data import as simple as that!
+
+Then the docker container...
+
+https://docs.docker.com/engine/reference/commandline/image_save/
+
+https://docs.docker.com/engine/reference/commandline/image_import/
+
