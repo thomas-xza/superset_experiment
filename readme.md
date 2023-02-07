@@ -359,19 +359,25 @@ Plotted the above, will do the rural/forestry plotted graph next.
 
 #13
 
-Copying all data (Docker container and Postgres DB) to new web server, for portability.
+Copying all data (Docker container and Postgres DB) to new web server, for portability/redundancy.
 
 https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository
 
-postgres $ createdb test_db
+Drop in a few Postgres files/patches from client into /etc/
 
-postgres $ psql
+Then export and import data:
+
+postgres:client $ pg_dump test_db > test_db.sql
+
+postgres:server $ createdb test_db
+
+postgres:server $ psql
 
 postgres=# CREATE USER test_superset WITH PASSWORD 'secret_here';
 
-postgres $ psql -d test_db -f test_db.sql
+postgres:server $ psql -d test_db -f test_db.sql
 
-Data import as simple as that!
+Data migration as simple as that!
 
 Then the docker container...
 
@@ -379,3 +385,43 @@ https://docs.docker.com/engine/reference/commandline/image_save/
 
 https://docs.docker.com/engine/reference/commandline/image_import/
 
+Change the admin password...
+
+# docker run [...]
+
+# docker exec -it superset_app /bin/bash
+
+superset_app $ superset fab reset-password --username admin --password "new_password"
+
+# docker commit [...]
+
+Then setup Apache with Certbot:
+
+# apt install apache2
+# a2enmod proxy
+# a2enmod proxy_http
+# a2enmod proxy_balancer
+# a2enmod lbmethod_byrequests
+
+Then insert above </VirtualHost> in /etc/apache2/sites-available/000-default-le-ssl.conf the following:
+
+ProxyPass / http://localhost:8080/
+ProxyPassReverse / http://localhost:8080/
+
+# service apache2 restart
+
+Then manually grant permissions:
+
+postgres $ psql -d test_db
+
+test_db=# GRANT pg_read_all_data TO test_superset;
+
+Also turn off ufw:
+
+# systemctl disable ufw
+
+Dropped the `docker run` command into crontab:
+
+@reboot	    docker run [...]
+
+Now everyting works at boot.
