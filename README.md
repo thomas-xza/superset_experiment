@@ -425,3 +425,19 @@ Dropped the `docker run` command into crontab:
     @reboot	    docker run [...]
 
 Now everyting works at boot.
+
+
+# #14
+
+Final ideas for scatter graphs of interest:
+
+Birth rate against population density scatter graph
+
+Percentage of female national parliament against literacy rate of adult males
+
+Fossil fuel usage against energy imports
+
+Electricity use per capita and GDP per capita
+
+GDP per capita and life expectancy (probably been done before)
+

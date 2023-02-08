@@ -1,0 +1,442 @@
+
+##  Activity log
+
+# #1
+
+Tried following instructions at:
+
+https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
+
+...didn't work
+
+Moved on to instructions at:
+
+https://hub.docker.com/r/apache/superset
+
+...more success, was able to login, see some sample data.
+
+Stopped container. Realised need to connect to real SQL database to import custom data.
+
+
+# #2
+
+Installed Postgres DB to host.
+
+Began building Dockerfile with hopes of connecting to Postgres DB on host.
+
+Used the dependency list at:
+
+https://superset.apache.org/docs/databases/installing-database-drivers
+
+Found guides for opening up Postgres to new connections:
+
+https://superset.apache.org/docs/installation/installing-superset-using-docker-compose/
+
+^ at bottom of page
+
+https://gist.github.com/MauricioMoraes/87d76577babd4e084cba70f63c04b07d
+
+...they worked!
+
+
+# #3
+
+Began setting up Postgres DB.
+
+https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
+
+Checked v14 is actually officially supported by Superset (phew, it is)
+
+https://superset.apache.org/docs/installation/configuring-superset
+
+    t $  sudo -i -u postgres 
+
+postgres $  createdb test_db
+
+    # useradd test_db
+
+Opting to share network with host to keep localhost connections simple, connecting via localhost:8088.
+
+So to build and run:
+
+    $ cd ~/superset_experiment.git/
+
+    t $ docker build .
+
+    postgres $ psql
+
+    postgres=# CREATE USER test_superset WITH PASSWORD 'secret_password';
+
+Then connect to it via GUI. The container is now connected to the DB!
+
+    t $ docker commit __________ apache/superset:dockerfile_psql
+
+Then to run at startup:
+
+    t $ docker run -d  --network=host apache/superset:dockerfile_psql
+
+
+
+# #4
+
+Onto sourcing some data.
+
+Went for data from data.police.uk
+
+Downloaded a data set of all police forces 2022, and checked it out manually.
+
+Found the GMP data was incomplete - 2022-08 only, only 1 crime featured.
+
+Went directly to gmp.police.uk website, but data was more about stats of police behavior.
+
+Tried to find info about a specific stabbing on police's own website but did not appear.
+
+Tried earlier data of 2020, but the .zip was empty
+
+Moved on to Essex 2022-12 data, found it is more comprehensive.
+
+
+# #5
+
+Onto importing data.
+
+Found tutorial:
+
+https://www.postgresqltutorial.com/postgresql-tutorial/import-csv-file-into-posgresql-table/
+
+And examples in official docs:
+
+https://www.postgresql.org/docs/current/sql-createtable.html
+
+Put SQL commands into a file, generated a table that fits CSV with:
+
+    $ psql -d test_db -a -f /tmp/create_table_police_data.sql
+
+Imported CSV to table with:
+
+    $ psql -d test_db -a -f /tmp/import_csv_police_data.sql
+
+OK the data appears to have fit OK, when running:
+
+    t $ docker run -d  --network=host --name 405bd7434a1e
+
+    postgres=# SELECT longitude,latitude FROM crime_data_essex;
+
+Hit some permission errors when trying to access via Supetset, found fix at:
+
+https://www.postgresql.r2schools.com/error-permission-denied-for-table-table_name-in-postgresql/
+
+    GRANT ALL PRIVILEGES ON TABLE crime_data_essex TO test_superset;
+
+Data is now accessible from within Apache Superset!
+
+
+# #6
+
+Onto visualising data...
+
+Would like to use co-ordinates to plot to map.
+
+Fixing a mistake in column naming (used a generic Postgres value name	):
+
+    test_db=# ALTER TABLE crime_data_essex
+    test_db-# RENAME COLUMN type TO crime_type;
+
+Created a dataset of violence crime via SQL statement:
+
+    SELECT longitude,latitude,crime_type FROM crime_data_essex WHERE crime_type LIKE 'Violence%';
+
+There has been a mismatch between expected data types, whilst trying to plot to a map.
+A weakness of Superset is it doesn't tell you what data type the chart is expecting?
+
+Found a recommendation for data types at:
+
+https://stackoverflow.com/questions/1196415/what-datatype-to-use-when-storing-latitude-and-longitude-data-in-sql-databases
+
+Ah it turns out another error in data, as some fields are NULL.
+
+So new SQL statement:
+
+    SELECT longitude,latitude,crime_type
+    FROM crime_data_essex
+    WHERE longitude is NOT NULL
+    AND latitude is NOT NULL
+    AND crime_type LIKE 'Violence%';
+
+Discovered another bug.
+If the Docker container shares with the host, this breaks the container's internet connectivity.
+
+So back to:
+
+    t $ docker run -d -p 8080:8088 apache/superset:dockerfile
+
+Realised it was not actually a bug, just a lack of Mapbox API key!
+
+So now running Superset with:
+
+    t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" -p 8080:8088 apache/superset:dockerfile
+
+
+# #7
+
+Moved onto London Met data import.
+
+Since the table template is already setup nicely, it is just a matter of:
+
+    $ cat 2022-*.csv > all_records.csv
+
+However, because there are CSV headers that get duplicated:
+
+    $ head -1 all_records.csv > all_records_clean.csv
+
+    $ grep -v "^Crime ID,Month," all_records.csv >> all_records_clean.csv
+
+Realised there is a more catch-all way to grant Postgres privs:
+
+    test_db=# GRANT pg_read_all_data TO test_superset;
+
+
+# #8
+
+Moved back to GMP police data import.
+
+Realised the police data is split across 2 files per month:
+
+1. The initial log of a crime scene
+
+2. The later outcome of the investigation
+
+It seems that both have to be considered, to get accurate info.
+
+They share a unique crime ID value.
+
+Adding a DNS name to the Docker run now.
+
+    t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" --add-host=database:192.168.1.24 -p 8080:8088 apache/superset:dockerfile
+
+Realised the outcomes of the investigations can be categorised as follows:
+
+----
+
+Red-alert crimes:
+
+Offender given suspended prison sentence
+Offender sent to prison
+Suspect charged
+
+
+Gray-area crimes:
+Offender given community sentence
+
+
+Ambiguous crimes:
+
+Court result unavailable
+Court case unable to proceed
+Action to be taken by another organisation
+Investigation complete; no suspect identified
+
+
+Not crimes(?):
+
+Defendant found not guilty
+Formal action is not in the public interest
+
+----
+
+
+# #9
+
+Imported all 2018-01 to 2019-06 GMP data, after joining the CSVs with Shell.
+
+Building new SQL statement, based on joining the two data sources:
+
+    SELECT
+    crime_data_gmp_street.longitude,
+    crime_data_gmp_street.latitude,
+    crime_data_gmp_outcomes.outcome_type
+    FROM crime_data_gmp_street
+    JOIN crime_data_gmp_outcomes
+    ON
+    crime_data_gmp_street.crime_id =
+    crime_data_gmp_outcomes.crime_id
+    WHERE outcome_type
+    LIKE 'Offender given suspended prison sentence'
+    OR outcome_type
+    LIKE 'Offender sent to prison';
+
+Plotted to map to view high crime areas.
+
+Then imported the 2016-07 to 2018-12 GMP data, this time ran `sort *.csv | uniq` beforehand
+
+Did a big SELECT COUNT(*) statement to ensure the numbers are reasonable (no duplicates).
+
+Plotted 2016-07 to 2019-06 to map, using same SQL statement.
+
+
+# #10
+
+Began looking at interest rate data from major banks.
+
+Found passable CSVs for Federal Reserve, Bank of England, EU data.
+
+Realised I need to know what format the data is expected to be in by Superset, before plotting it.
+
+It seems Superset only tells you when you try to plot data? Nonetheless, line graph requires DATETIME.
+
+https://www.postgresql.org/docs/current/datatype-datetime.html
+
+The USA government data required the least work, or at least, someone else had already done the work.
+
+The European Central Bank required the most work, and had various quirks/hacks going on.
+
+Inserted the data into 3 tables, but unfortunately there is no simple way to merge them into 1 graph with Superset.
+
+There is a chart option for 2 different data sets, but compared to traditional spreadsheet software, beginning to feel the limitations of this software!
+
+
+# #11
+
+Concluded Apache Superset is strongest on maps.
+
+Decided to look at World Bank data as a result.
+
+Unfortunately they have this "DataBank" web app for accessing data but it doesn't always work.
+
+Realised also that, to keep Docker container portable, need to bind Postgres to Docker IP.
+
+New Docker commands:
+
+    t $ docker run -d -e MAPBOX_API_KEY="pk.eyJ1IjoieHphLXRlc3QiLCJhIjoiY2xkbjNlcmllMDRrczNxcGZ0Y29uMml1biJ9.t3sAoIppdcTXU0OJzZXbmA" --add-host=postgres:172.17.0.1 -p 8080:8088 apache/superset:datasetsv1
+
+Found that Postgres is starting before Docker at boot, needed some manual SystemD changes to correct the ordering.
+
+Found WorldBank data CSV can contain alot of redundant columns - can either be selective via Postgres or Python.
+
+With Python, hit issues with Unicode and limitations of `csv` library. So, opted to try out Postgres.
+
+Hitting different errors (data type mismatch) with Postgres' import tools, again due to bad data. Unfortunately no way for Postgres to ignore erroneous lines automatically.
+
+One remedy to limitations of Postgres suggested online is to validate the data via Python........
+
+Anyway at this point will just use `sed`.
+
+...aaaand right back to unicode errors. Back to Python. Turns out you fix unicode errors most simply with:
+
+    with open(filename, "rb") as f:
+
+        return f.read().decode(encoding='utf-8', errors='ignore')
+	
+Finally plotted the World Bank data.
+
+
+# #12
+
+After checking news about Turkey earthquake, thought it may be worthwhile plotting earthquake data.
+
+https://earthquake.usgs.gov/earthquakes/search/
+
+However, the US government funded website (above) which allegedly outputs CSVs did not work.
+
+Back to World Bank data, found gold reserves by country, but unfortunately already automatically plotted.
+
+Could combine two data sets perhaps, for something novel, to seek correlations.
+
+Percentage of rural population against percentage of land which is forest?
+
+A simple subtraction would probably suffice, followed by plotting in a way that shows the difference.
+
+For example, if 50% forest but only 25% rural, then that is a +25% score.
+
+On the contrary, 75% rural but 50% forest would be -25% score.
+
+These scores then plotted to a world map, as well as a line graph with the two data sets.
+
+Another idea: compare the rural population of each country over a 10 year gap.
+
+Plotted the above, will do the rural/forestry plotted graph next.
+
+
+# #13
+
+Copying all data (Docker container and Postgres DB) to new web server, for portability/redundancy.
+
+https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository
+
+Drop in a few Postgres files/patches from client into /etc/
+
+Then export and import data:
+
+    postgres:client $ pg_dump test_db > test_db.sql
+
+    postgres:server $ createdb test_db
+
+    postgres:server $ psql
+
+    postgres=# CREATE USER test_superset WITH PASSWORD 'secret_here';
+
+    postgres:server $ psql -d test_db -f test_db.sql
+
+Data migration as simple as that!
+
+Then the docker container...
+
+https://docs.docker.com/engine/reference/commandline/image_save/
+
+https://docs.docker.com/engine/reference/commandline/image_import/
+
+Change the admin password...
+
+    # docker run [...]
+
+    # docker exec -it superset_app /bin/bash
+
+superset_app $ superset fab reset-password --username admin --password "new_password"
+
+    # docker commit [...]
+
+Then setup Apache with Certbot:
+
+    # apt install apache2
+    # a2enmod proxy
+    # a2enmod proxy_http
+    # a2enmod proxy_balancer
+    # a2enmod lbmethod_byrequests
+
+Then insert above </VirtualHost> in /etc/apache2/sites-available/000-default-le-ssl.conf the following:
+
+    ProxyPass / http://localhost:8080/
+    ProxyPassReverse / http://localhost:8080/
+
+    # service apache2 restart
+
+Then manually grant permissions:
+
+    postgres $ psql -d test_db
+
+    test_db=# GRANT pg_read_all_data TO test_superset;
+
+Also turn off ufw:
+
+    # systemctl disable ufw
+
+Dropped the `docker run` command into crontab:
+
+    @reboot	    docker run [...]
+
+Now everyting works at boot.
+
+
+# #14
+
+Final ideas for scatter graphs of interest:
+
+Birth rate against population density scatter graph
+
+Fossil fuel usage against energy imports
+
+Electricity use per capita and GDP per capita
+
+GDP per capita and life expectancy (probably been done before)
+
+Percentage of female national parliament against literacy rate of adult males
