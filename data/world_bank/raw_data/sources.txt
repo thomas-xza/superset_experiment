@@ -1,4 +1,3 @@
 https://datacatalog.worldbank.org/search/dataset/0061222/Food-Prices-for-Nutrition
 
-https://data.worldbank.org/indicator/SP.RUR.TOTL?view=chart
-https://data.worldbank.org/indicator/AG.LND.FRST.ZS?view=map
+https://data.worldbank.org/indicator

@@ -1,35 +1,47 @@
 #!/usr/bin/env python3.11
 
-import csv
+##  $ ./indicator_data_selector.py ./raw_data/example.csv
 
+import argparse
+import csv
+import os.path
 import re
 
 
 def main():
 
-    # filename = "forest_percentage_country.csv"
+    file_path = parse_arg()
 
-    filename = "rural_population_percentage_country.csv"
-
-    data = read_file(f"./raw_data/{filename}")
+    data = read_file(file_path)
     
-    # data = normalise_data(data)
-
     # data = finalise_data(data)
 
-    write_data(filename, data)
+    write_data(file_path, data)
+
+
+def parse_arg():
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('filename')
+
+    args = parser.parse_args()
+
+    return args.filename
 
     
-def write_data(filename, data):
+def write_data(file_path, data):
+
+    filename = os.path.basename(file_path)
 
     with open(f"./processed_data/{filename}", "w") as f:
 
-        f.write("country,country_code,2010,2020\n")
+        f.write("country,country_code,2010,2012,2014,2016,2018,2020\n")
 
         f.write(data)
     
 
-def finalise_data(data):
+# def finalise_data(data):
 
     # lines = data.split("\n")
 
@@ -43,41 +55,30 @@ def finalise_data(data):
 
     #     new_data = new_data.replace("\n\n", "\n")
 
-    return new_data
+    # return new_data
 
 
-def normalise_data(data):
+def read_file(file_path):
 
-    return data
+    new_csv = ""
 
-    
-def read_file(filename):
-
-    rows_str = ""
-
-    with open(filename, "r") as csv_file:
+    with open(file_path, "r") as csv_file:
 
         csv_dict = csv.DictReader(csv_file)
 
         for row in csv_dict:
 
-            new_row = {}
+            for key in [ "Country Name", "Country Code" ]:
 
-            if row["2020"] != '':
+                new_csv += '"' + row[key] + '",'
 
-                for key in [ "Country Name", "Country Code" ]:
+            for key in [ "2010", "2012", "2014", "2016", "2018", "2020" ]:
 
-                    rows_str += '"' + row[key] + '",'
+                new_csv += row[key].split(".")[0] + ","
 
-                for key in [ "2010", "2020" ]:
+            new_csv = new_csv.removesuffix(",") + "\n"
 
-                    rows_str += row[key].split(".")[0] + ","
-
-                rows_str = rows_str.removesuffix(",")
-
-                rows_str += "\n"
-
-    return rows_str
+    return new_csv
 
     
 main()

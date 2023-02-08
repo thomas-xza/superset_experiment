@@ -1,0 +1,267 @@
+country,country_code,2010,2012,2014,2016,2018,2020
+"Aruba","ABW",75,75,75,75,76,75
+"Africa Eastern and Southern","AFE",58,60,61,62,63,63
+"Afghanistan","AFG",60,61,62,63,63,62
+"Africa Western and Central","AFW",54,55,55,56,57,57
+"Angola","AGO",56,58,60,61,62,62
+"Albania","ALB",77,78,78,78,79,76
+"Andorra","AND",,,,,,
+"Arab World","ARB",70,70,70,70,71,70
+"United Arab Emirates","ARE",78,78,79,79,79,78
+"Argentina","ARG",75,76,76,76,76,75
+"Armenia","ARM",73,73,74,74,75,72
+"American Samoa","ASM",,,,,,
+"Antigua and Barbuda","ATG",76,77,77,78,78,78
+"Australia","AUS",81,82,82,82,82,83
+"Austria","AUT",80,80,81,81,81,81
+"Azerbaijan","AZE",69,70,71,72,72,66
+"Burundi","BDI",57,58,59,60,61,61
+"Belgium","BEL",80,80,81,81,81,80
+"Benin","BEN",58,58,59,59,60,60
+"Burkina Faso","BFA",56,57,58,59,60,59
+"Bangladesh","BGD",68,69,69,71,72,71
+"Bulgaria","BGR",73,74,74,74,74,73
+"Bahrain","BHR",78,79,79,79,79,79
+"Bahamas, The","BHS",72,72,73,73,73,72
+"Bosnia and Herzegovina","BIH",77,77,75,76,77,76
+"Belarus","BLR",70,71,72,73,74,74
+"Belize","BLZ",72,73,73,73,73,72
+"Bermuda","BMU",79,81,80,81,81,82
+"Bolivia","BOL",66,66,67,67,67,64
+"Brazil","BRA",73,73,74,74,75,74
+"Barbados","BRB",75,76,76,76,77,77
+"Brunei Darussalam","BRN",74,74,74,74,74,74
+"Bhutan","BTN",68,69,70,70,71,71
+"Botswana","BWA",60,60,62,65,65,65
+"Central African Republic","CAF",49,50,50,53,54,54
+"Canada","CAN",81,81,81,81,82,81
+"Central Europe and the Baltics","CEB",75,75,76,76,76,76
+"Switzerland","CHE",82,82,83,83,83,83
+"Channel Islands","CHI",81,81,81,81,81,81
+"Chile","CHL",78,79,79,80,80,79
+"China","CHN",75,76,76,77,77,78
+"Cote d'Ivoire","CIV",55,56,57,58,58,59
+"Cameroon","CMR",56,57,58,60,61,60
+"Congo, Dem. Rep.","COD",56,57,58,59,59,59
+"Congo, Rep.","COG",61,62,62,63,64,63
+"Colombia","COL",75,75,76,76,76,74
+"Comoros","COM",61,61,62,63,63,64
+"Cabo Verde","CPV",73,74,75,75,75,74
+"Costa Rica","CRI",78,79,78,79,79,79
+"Caribbean small states","CSS",72,72,72,72,72,72
+"Cuba","CUB",77,77,77,77,77,77
+"Curacao","CUW",,77,77,77,,
+"Cayman Islands","CYM",82,,,,,
+"Cyprus","CYP",79,80,80,81,81,81
+"Czechia","CZE",77,78,78,79,79,78
+"Germany","DEU",79,80,81,80,80,80
+"Djibouti","DJI",60,60,61,62,63,62
+"Dominica","DMA",,,,,,
+"Denmark","DNK",79,80,80,80,80,81
+"Dominican Republic","DOM",72,72,72,72,73,72
+"Algeria","DZA",73,74,75,75,76,74
+"East Asia & Pacific (excluding high income)","EAP",73,74,74,75,75,75
+"Early-demographic dividend","EAR",67,68,69,70,70,70
+"East Asia & Pacific","EAS",74,75,75,76,76,76
+"Europe & Central Asia (excluding high income)","ECA",70,71,72,72,73,72
+"Europe & Central Asia","ECS",75,76,77,77,77,77
+"Ecuador","ECU",75,76,76,76,77,72
+"Egypt, Arab Rep.","EGY",69,70,70,70,71,70
+"Euro area","EMU",80,81,81,81,82,81
+"Eritrea","ERI",63,64,65,66,67,67
+"Spain","ESP",81,82,83,83,83,82
+"Estonia","EST",75,76,77,77,78,78
+"Ethiopia","ETH",59,61,62,64,65,65
+"European Union","EUU",79,80,80,80,81,80
+"Fragile and conflict affected situations","FCS",59,60,60,61,61,61
+"Finland","FIN",79,80,81,81,81,82
+"Fiji","FJI",67,67,67,67,67,67
+"France","FRA",81,81,82,82,82,82
+"Faroe Islands","FRO",80,81,81,82,82,83
+"Micronesia, Fed. Sts.","FSM",71,71,71,71,71,70
+"Gabon","GAB",63,64,64,65,66,66
+"United Kingdom","GBR",80,80,81,81,81,80
+"Georgia","GEO",72,72,73,73,73,72
+"Ghana","GHA",61,62,63,63,64,64
+"Gibraltar","GIB",80,83,81,81,82,82
+"Guinea","GIN",56,57,57,58,59,59
+"Gambia, The","GMB",60,62,62,63,63,62
+"Guinea-Bissau","GNB",56,57,58,59,60,59
+"Equatorial Guinea","GNQ",57,58,59,60,61,60
+"Greece","GRC",80,80,81,81,81,81
+"Grenada","GRD",74,75,74,74,74,74
+"Greenland","GRL",70,70,71,71,71,71
+"Guatemala","GTM",70,71,71,72,72,71
+"Guam","GUM",76,76,76,76,77,76
+"Guyana","GUY",66,67,67,68,68,68
+"High income","HIC",79,80,80,80,80,80
+"Hong Kong SAR, China","HKG",82,83,83,84,84,85
+"Honduras","HND",71,71,72,72,72,71
+"Heavily indebted poor countries (HIPC)","HPC",58,60,61,62,62,62
+"Croatia","HRV",76,76,77,78,78,77
+"Haiti","HTI",46,62,62,63,64,64
+"Hungary","HUN",74,75,75,76,76,75
+"IBRD only","IBD",71,72,72,73,73,73
+"IDA & IBRD total","IBT",68,69,70,70,71,70
+"IDA total","IDA",60,61,62,63,63,63
+"IDA blend","IDB",59,59,60,60,61,61
+"Indonesia","IDN",68,68,69,69,70,68
+"IDA only","IDX",61,62,63,64,65,64
+"Isle of Man","IMN",78,79,80,80,80,80
+"India","IND",66,67,69,70,70,70
+"Not classified","INX",,,,,,
+"Ireland","IRL",80,80,81,81,82,82
+"Iran, Islamic Rep.","IRN",73,74,74,75,76,74
+"Iraq","IRQ",67,68,68,68,71,69
+"Iceland","ISL",81,82,82,82,82,83
+"Israel","ISR",81,81,82,82,82,82
+"Italy","ITA",82,82,83,83,83,82
+"Jamaica","JAM",72,73,72,72,71,71
+"Jordan","JOR",74,74,74,75,75,75
+"Japan","JPN",82,83,83,83,84,84
+"Kazakhstan","KAZ",68,69,71,72,73,71
+"Kenya","KEN",60,61,61,62,62,62
+"Kyrgyz Republic","KGZ",69,70,70,70,71,71
+"Cambodia","KHM",67,68,69,70,70,70
+"Kiribati","KIR",65,65,65,66,66,67
+"St. Kitts and Nevis","KNA",,,,,,
+"Korea, Rep.","KOR",80,80,81,82,82,83
+"Kuwait","KWT",77,78,79,79,79,76
+"Latin America & Caribbean (excluding high income)","LAC",73,73,74,74,74,72
+"Lao PDR","LAO",63,65,66,67,67,68
+"Lebanon","LBN",78,78,78,79,79,77
+"Liberia","LBR",59,59,59,60,60,60
+"Libya","LBY",72,72,71,71,72,72
+"St. Lucia","LCA",72,72,72,73,73,73
+"Latin America & Caribbean","LCN",73,74,74,74,74,73
+"Least developed countries: UN classification","LDC",60,62,63,64,64,64
+"Low income","LIC",59,60,61,62,62,62
+"Liechtenstein","LIE",81,82,82,82,83,81
+"Sri Lanka","LKA",73,73,74,75,75,76
+"Lower middle income","LMC",66,67,67,68,69,68
+"Low & middle income","LMY",68,69,70,70,71,70
+"Lesotho","LSO",45,47,50,52,53,54
+"Late-demographic dividend","LTE",74,75,75,76,76,76
+"Lithuania","LTU",73,73,74,74,75,74
+"Luxembourg","LUX",80,81,82,82,82,81
+"Latvia","LVA",73,73,74,74,74,75
+"Macao SAR, China","MAC",83,83,83,84,84,85
+"St. Martin (French part)","MAF",78,79,79,79,80,80
+"Morocco","MAR",70,71,72,73,73,73
+"Monaco","MCO",,,,,,
+"Moldova","MDA",69,69,69,69,70,70
+"Madagascar","MDG",62,63,64,64,65,65
+"Maldives","MDV",77,78,79,79,80,79
+"Middle East & North Africa","MEA",72,72,72,73,73,72
+"Mexico","MEX",74,74,74,74,74,70
+"Marshall Islands","MHL",,,,,,
+"Middle income","MIC",69,70,71,71,72,71
+"North Macedonia","MKD",74,74,75,75,76,75
+"Mali","MLI",56,57,57,58,59,58
+"Malta","MLT",81,80,82,82,82,82
+"Myanmar","MMR",63,64,65,65,66,66
+"Middle East & North Africa (excluding high income)","MNA",71,71,71,72,72,72
+"Montenegro","MNE",75,76,76,76,76,75
+"Mongolia","MNG",67,68,69,69,71,72
+"Northern Mariana Islands","MNP",,,,,,
+"Mozambique","MOZ",54,55,57,59,60,61
+"Mauritania","MRT",63,63,64,64,65,64
+"Mauritius","MUS",72,73,74,74,74,74
+"Malawi","MWI",56,58,60,62,63,63
+"Malaysia","MYS",74,74,75,75,75,75
+"North America","NAC",78,79,79,78,78,77
+"Namibia","NAM",56,57,59,61,62,62
+"New Caledonia","NCL",77,77,77,76,80,80
+"Niger","NER",58,59,60,61,62,61
+"Nigeria","NGA",50,51,51,52,52,52
+"Nicaragua","NIC",72,72,72,73,73,71
+"Netherlands","NLD",80,81,81,81,81,81
+"Norway","NOR",80,81,82,82,82,83
+"Nepal","NPL",66,67,68,68,68,69
+"Nauru","NRU",,,,,,
+"New Zealand","NZL",80,81,81,81,81,82
+"OECD members","OED",79,79,79,79,80,79
+"Oman","OMN",76,77,77,77,77,74
+"Other small states","OSS",64,65,66,67,68,68
+"Pakistan","PAK",64,64,65,65,66,66
+"Panama","PAN",76,76,77,77,77,76
+"Peru","PER",73,74,75,75,76,73
+"Philippines","PHL",70,70,71,71,71,72
+"Palau","PLW",,,,,,
+"Papua New Guinea","PNG",63,63,64,64,65,65
+"Poland","POL",76,76,77,77,77,76
+"Pre-demographic dividend","PRE",56,57,58,59,60,60
+"Puerto Rico","PRI",78,78,78,80,79,78
+"Korea, Dem. People's Rep.","PRK",70,71,72,72,73,73
+"Portugal","PRT",79,80,81,81,81,80
+"Paraguay","PRY",71,72,72,73,73,73
+"West Bank and Gaza","PSE",73,73,72,74,74,74
+"Pacific island small states","PSS",68,68,68,68,69,69
+"Post-demographic dividend","PST",79,80,80,80,80,80
+"French Polynesia","PYF",81,81,82,82,82,82
+"Qatar","QAT",78,79,79,80,80,79
+"Romania","ROU",73,74,74,75,75,74
+"Russian Federation","RUS",68,70,70,71,72,71
+"Rwanda","RWA",62,64,64,65,66,66
+"South Asia","SAS",66,67,68,69,70,69
+"Saudi Arabia","SAU",75,76,76,77,77,76
+"Sudan","SDN",63,63,64,64,65,65
+"Senegal","SEN",64,65,66,67,68,68
+"Singapore","SGP",81,81,82,82,83,83
+"Solomon Islands","SLB",68,69,69,69,70,70
+"Sierra Leone","SLE",53,55,56,58,59,59
+"El Salvador","SLV",71,71,71,72,72,71
+"San Marino","SMR",,,,,,
+"Somalia","SOM",50,53,54,55,56,55
+"Serbia","SRB",74,74,75,75,75,74
+"Sub-Saharan Africa (excluding high income)","SSA",56,58,59,60,60,60
+"South Sudan","SSD",54,55,54,55,55,55
+"Sub-Saharan Africa","SSF",56,58,59,60,60,60
+"Small states","SST",66,67,67,68,69,69
+"Sao Tome and Principe","STP",65,65,66,67,68,67
+"Suriname","SUR",69,69,69,71,72,72
+"Slovak Republic","SVK",75,76,76,77,77,76
+"Slovenia","SVN",79,80,81,81,81,80
+"Sweden","SWE",81,81,82,82,82,82
+"Eswatini","SWZ",46,49,53,56,59,59
+"Sint Maarten (Dutch part)","SXM",,73,77,78,,
+"Seychelles","SYC",73,74,73,74,72,77
+"Syrian Arab Republic","SYR",73,66,63,65,70,72
+"Turks and Caicos Islands","TCA",76,77,77,76,76,75
+"Chad","TCD",49,50,51,52,52,52
+"East Asia & Pacific (IDA & IBRD countries)","TEA",73,74,74,75,75,75
+"Europe & Central Asia (IDA & IBRD countries)","TEC",71,72,72,73,74,72
+"Togo","TGO",57,58,58,59,60,61
+"Thailand","THA",76,76,77,78,78,79
+"Tajikistan","TJK",67,68,69,69,70,67
+"Turkmenistan","TKM",68,68,68,68,68,68
+"Latin America & the Caribbean (IDA & IBRD countries)","TLA",73,73,74,74,74,72
+"Timor-Leste","TLS",65,66,66,67,68,68
+"Middle East & North Africa (IDA & IBRD countries)","TMN",71,71,71,72,72,72
+"Tonga","TON",70,70,70,70,70,70
+"South Asia (IDA & IBRD)","TSA",66,67,68,69,70,69
+"Sub-Saharan Africa (IDA & IBRD countries)","TSS",56,58,59,60,60,60
+"Trinidad and Tobago","TTO",72,73,74,74,73,74
+"Tunisia","TUN",75,75,75,75,75,75
+"Turkiye","TUR",75,75,76,76,77,75
+"Tuvalu","TUV",63,63,64,64,64,64
+"Tanzania","TZA",60,62,63,65,66,66
+"Uganda","UGA",57,58,60,61,62,62
+"Ukraine","UKR",70,70,71,71,71,71
+"Upper middle income","UMC",74,74,75,75,76,75
+"Uruguay","URY",76,77,77,77,77,78
+"United States","USA",78,78,78,78,78,77
+"Uzbekistan","UZB",69,69,70,70,71,70
+"St. Vincent and the Grenadines","VCT",74,74,74,74,74,72
+"Venezuela, RB","VEN",72,73,72,72,71,71
+"British Virgin Islands","VGB",75,75,75,75,75,75
+"Virgin Islands (U.S.)","VIR",77,78,78,79,79,79
+"Vietnam","VNM",73,73,73,73,73,75
+"Vanuatu","VUT",69,69,69,69,69,70
+"World","WLD",70,71,71,72,72,72
+"Samoa","WSM",72,72,72,72,72,72
+"Kosovo","XKX",77,78,78,78,78,76
+"Yemen, Rep.","YEM",67,67,67,66,64,64
+"South Africa","ZAF",58,61,63,64,65,65
+"Zambia","ZMB",56,58,60,61,62,62
+"Zimbabwe","ZWE",50,55,58,60,61,61

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+grep "Last Updated Date"
+
+sed -e '1,3d' 
